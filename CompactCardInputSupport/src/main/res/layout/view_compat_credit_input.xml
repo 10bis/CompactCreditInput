@@ -6,11 +6,14 @@
     android:layout_height="wrap_content">
 
     <android.support.v7.widget.AppCompatTextView
-        style="@style/MyTextAppearance.InputLabel"
+        android:id="@+id/view_compat_credit_input_card_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_8dp"
-        android:text="@string/card_details" />
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/takeaway_sans_bold"
+        android:text="@string/card_details"
+        android:textColor="@color/dark_blue"
+        android:textSize="13sp"/>
 
     <android.support.v7.widget.LinearLayoutCompat
         android:id="@+id/view_compat_credit_input_card_root"
