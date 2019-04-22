@@ -1,4 +1,16 @@
-language: java
-rvm:
-- 2.2
-- jruby
+language: android
+
+jdk:
+- oraclejdk8
+
+script:
+- "./gradlew clean build detekt install -PdisablePreDex --stacktrace"
+
+deploy:
+  provider: releases
+  file:
+    - /
+  skip_cleanup: true
+  on:
+    repo: 10bis/CompactCreditInput
+    tags: true
