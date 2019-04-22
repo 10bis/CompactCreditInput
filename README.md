@@ -4,22 +4,23 @@ A compact credit card input field that combines the number date and cvv into a s
 [![Build Status](https://travis-ci.org/10bis/CompactCreditInput.svg?branch=master)](https://travis-ci.org/10bis/CompactCreditInput)
 [![Release](https://jitpack.io/v/10bis/compactCreditInput.svg)](https://jitpack.io/#10bis/compactCreditInput)
 
-![image](screenshots/screen_amex.png)
-![image](screenshots/screen_visa.png)
+
+<img src="screenshots/screen_amex.png" alt="drawing" width="300"/> <img src="screenshots/screen_visa.png" alt="drawing" width="300"/>
+
 
 ## Getting Started
 
 Add JitPack to your repositories
 
-      repositories {
+    repositories {
         maven { url "https://jitpack.io" }
-      }
+    }
       
 And then add the implementation to your dependencies 
 
-      dependencies {
-	  	implementation "com.github.10bis:compactCreditInput:$latest_version"
-      }
+    dependencies {
+        implementation "com.github.10bis:compactCreditInput:$latest_version"
+    }
 
 ### Usage
 
@@ -41,10 +42,4 @@ See also the list of [contributors](https://github.com/10bis/CompactCreditInput/
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details
