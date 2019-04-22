@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CompactCardInputText.InputLabel" parent="">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:fontFamily">@font/takeaway_sans_bold</item>
+    </style>
+
+    <style name="CompactCardInputText.InputField" parent="">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/medium_grey</item>
+        <item name="android:fontFamily">@font/takeaway_sans_regular</item>
+    </style>
+</resources>

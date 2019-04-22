@@ -1,0 +1,7 @@
+apply plugin: 'org.jetbrains.dokka-android'
+
+dokka {
+    outputFormat = 'javadoc'
+    outputDirectory = "javadoc"
+    skipEmptyPackages = true
+}

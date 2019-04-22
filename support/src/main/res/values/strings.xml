@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CompactCardInput</string>
+
+    <string name="credit_card_input_number_hint" translatable="false">XXXX XXXX XXXX XXXX</string>
+    <string name="credit_card_input_date_hint" translatable="false">MM/YY</string>
+    <string name="credit_card_input_cvv_hint" translatable="false">CVV</string>
+    <string name="card_details">* Card details</string>
+</resources>
