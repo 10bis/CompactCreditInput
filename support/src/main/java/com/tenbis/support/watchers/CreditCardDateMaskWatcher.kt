@@ -16,18 +16,15 @@ class CreditCardDateMaskWatcher(
 
     override var errorAllowanceLevel: AllowanceLevel = AllowanceLevel.SUGGEST_FIX
 
-    private val datePattern = Pattern.compile("(0[1-9]|1[0-2])(19|[2-6]\\d)")
+    private val datePattern = Pattern.compile("(0[1-9]|1[0-2])(19|[2-3]\\d)")
 
     private val now = Calendar.getInstance()
+    private val comperableInstance = GregorianCalendar(now.get(Calendar.YEAR), now.get(Calendar.MONTH), 1)
 
     private val dateFormat = SimpleDateFormat("MMyy", Locale.ENGLISH)
 
     private var isValid = false
     private var parsedValidDate: Date? = null
-
-    init {
-        now.set(Calendar.DAY_OF_MONTH, 1)
-    }
 
     override fun removeAppliedMask(editable: Editable) {
         val spans = editable.getSpans(0, editable.length, SlashSpan::class.java)
@@ -47,8 +44,8 @@ class CreditCardDateMaskWatcher(
 
         if (isValid && content.length == maxLength) {
             val parsedDate = dateFormat.parse(content.toString())
-
-            isValid = !parsedDate.before(now.time)
+            now.set(Calendar.DAY_OF_MONTH, 1)
+            isValid = !parsedDate.before(comperableInstance.time)
 
             parsedValidDate = if (isValid) parsedDate else null
         }

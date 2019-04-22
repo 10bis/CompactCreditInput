@@ -43,7 +43,7 @@ data class CreditCard(
      */
     val isExpiryValid: Boolean
         get() {
-            if (expiryMonth < 1 || 12 < expiryMonth) return false
+            if (expiryMonth < 1 || LATEST_POSSIBLE_MONTH < expiryMonth) return false
 
             val now = Calendar.getInstance()
             val thisYear = now.get(Calendar.YEAR)
@@ -52,7 +52,7 @@ data class CreditCard(
             if (expiryYear < thisYear) return false
             if (expiryYear == thisYear && expiryMonth < thisMonth) return false
 
-            return expiryYear <= thisYear + 15
+            return expiryYear <= thisYear + YEARS_FROM_NOW
         }
 
     constructor(src: Parcel) : this() {
@@ -67,7 +67,7 @@ data class CreditCard(
      */
     fun getLastFourDigitsOfCardNumber(): String {
         if (cardNumber.isEmpty()) return ""
-        val available = Math.min(4, cardNumber.length)
+        val available = Math.min(LAST_FOUR_DIGITS_MIN, cardNumber.length)
         return cardNumber.substring(cardNumber.length - available)
     }
 
@@ -80,13 +80,16 @@ data class CreditCard(
         dest.writeString(cvv)
     }
 
-    companion object CREATOR : Parcelable.Creator<CreditCard> {
-        override fun createFromParcel(parcel: Parcel): CreditCard {
-            return CreditCard(parcel)
-        }
+    companion object {
+        private const val LAST_FOUR_DIGITS_MIN = 4
+        private const val YEARS_FROM_NOW = 15
+        private const val LATEST_POSSIBLE_MONTH = 12
 
-        override fun newArray(size: Int): Array<CreditCard?> {
-            return arrayOfNulls(size)
+        @JvmField
+        val CREATOR: Parcelable.Creator<CreditCard> = object : Parcelable.Creator<CreditCard> {
+            override fun createFromParcel(parcel: Parcel): CreditCard = CreditCard(parcel)
+
+            override fun newArray(size: Int): Array<CreditCard?> = arrayOfNulls(size)
         }
     }
 }

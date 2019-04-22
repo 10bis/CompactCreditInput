@@ -6,21 +6,17 @@ import android.arch.lifecycle.OnLifecycleEvent
 import android.content.Context
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
-import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
-import android.os.ResultReceiver
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.AppCompatEditText
 import android.support.v7.widget.AppCompatImageView
 import android.support.v7.widget.AppCompatTextView
 import android.support.v7.widget.LinearLayoutCompat
-import android.text.InputType
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
 import android.view.inputmethod.InputMethodManager
@@ -31,8 +27,8 @@ import com.tenbis.support.listeners.CreditCardTextChangeListener
 import com.tenbis.support.listeners.OnCreditCardStateChanged
 import com.tenbis.support.models.CreditCard
 import com.tenbis.support.watchers.CreditCardCvvMaskWatcher
-import com.tenbis.support.watchers.CreditCardNumberMaskWatcher
 import com.tenbis.support.watchers.CreditCardDateMaskWatcher
+import com.tenbis.support.watchers.CreditCardNumberMaskWatcher
 
 class CompactCreditInput @JvmOverloads constructor(
     context: Context,
@@ -489,4 +485,3 @@ class CompactCreditInput @JvmOverloads constructor(
         private val DEFAULT_TEXT_COLOR = R.color.medium_grey
     }
 }
-

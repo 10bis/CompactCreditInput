@@ -9,7 +9,7 @@ package com.tenbis.support.consts
 enum class CardType(
     val numberLength: Int = -1,
     val cvvLength: Int = -1,
-    val cardSpacingPattern: Set<Int> = hashSetOf(4, 8, 12)
+    val cardSpacingPattern: Set<Int>
 ) {
 
     /**
@@ -26,23 +26,23 @@ enum class CardType(
     /**
      * Discover starts with 6x for some values of x.
      */
-    DISCOVER(16, 3),
+    DISCOVER(16, 3, hashSetOf(4, 8, 12)),
     /**
      * JCB (see http://www.jcbusa.com/) cards start with 35
      */
-    JCB(16, 3),
+    JCB(16, 3, hashSetOf(4, 8, 12)),
     /**
      * Mastercard starts with 51-55
      */
-    MASTERCARD(16, 3),
+    MASTERCARD(16, 3, hashSetOf(4, 8, 12)),
     /**
      * Visa starts with 4
      */
-    VISA(16, 3),
+    VISA(16, 3, hashSetOf(4, 8, 12)),
     /**
      * Maestro
      */
-    MAESTRO(16, 3),
+    MAESTRO(16, 3, hashSetOf(4, 8, 12)),
     /**
      * Unknown card type.
      */
@@ -105,7 +105,7 @@ enum class CardType(
          * @return the inferred card type
          */
         fun fromCardNumber(cardNumber: String): CardType {
-            if (cardNumber.isEmpty()) return CardType.UNKNOWN
+            if (cardNumber.isEmpty()) return UNKNOWN
 
             val possibleCardTypes = HashSet<CardType>()
 

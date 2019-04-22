@@ -27,9 +27,9 @@ test-pattern: # Configure exclusions for test sources
 build:
   maxIssues: 2
   weights:
-  # complexity: 2
-  # LongParameterList: 1
-  # style: 1
+   complexity: 2
+   LongParameterList: 1
+   style: 1
   # comments: 1
 
 processors:
@@ -438,7 +438,7 @@ style:
     ignorePropertyDeclaration: false
     ignoreConstantDeclaration: true
     ignoreCompanionObjectPropertyDeclaration: true
-    ignoreAnnotation: false
+    ignoreAnnotation: true
     ignoreNamedArgument: true
     ignoreEnums: true
   MandatoryBracesIfStatements:

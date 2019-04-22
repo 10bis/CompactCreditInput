@@ -10,12 +10,7 @@ import android.text.style.ReplacementSpan
  */
 class SlashSpan : ReplacementSpan() {
 
-    override fun getSize(
-        paint: Paint,
-        text: CharSequence,
-        start: Int, end: Int,
-        fm: Paint.FontMetricsInt?
-    ): Int {
+    override fun getSize(paint: Paint, text: CharSequence, start: Int, end: Int, fm: Paint.FontMetricsInt?): Int {
         val slash = paint.measureText(DIVIDER, 0, 1)
         val textSize = paint.measureText(text, start, end)
         return (slash + textSize).toInt()
@@ -24,8 +19,12 @@ class SlashSpan : ReplacementSpan() {
     override fun draw(
         canvas: Canvas,
         text: CharSequence,
-        start: Int, end: Int,
-        x: Float, top: Int, y: Int, bottom: Int,
+        start: Int,
+        end: Int,
+        x: Float,
+        top: Int,
+        y: Int,
+        bottom: Int,
         paint: Paint
     ) {
         val spannedText = "${text.subSequence(start, end)}$DIVIDER"

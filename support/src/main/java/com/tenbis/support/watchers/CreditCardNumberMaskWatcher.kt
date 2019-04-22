@@ -19,7 +19,7 @@ class CreditCardNumberMaskWatcher(
         super.onTextChanged(content, start, before, count)
         val updatedLength = start + count
 
-        if (updatedLength < 2) {
+        if (updatedLength < CARD_TYPE_MIN_CHARS) {
             cardType = CardType.UNKNOWN
             creditCardTextChangeListener.onCardTypeFound(cardType)
         } else if (updatedLength in CARD_TYPE_MIN_CHARS..CARD_TYPE_MAX_CHARS ||
