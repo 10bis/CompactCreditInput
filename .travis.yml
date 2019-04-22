@@ -26,12 +26,3 @@ before_install:
   -
 script:
 - "./gradlew clean build detekt install"
-
-deploy:
-  provider: releases
-  file:
-    - /
-  skip_cleanup: true
-  on:
-    repo: 10bis/CompactCreditInput
-    tags: true
