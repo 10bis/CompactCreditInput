@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity(), OnCreditCardStateChanged {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        main_activity_credit_card.attachLifecycle(lifecycle)
         main_activity_credit_card.addOnCreditCardStateChangedListener(this)
     }
 
