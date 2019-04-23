@@ -1,28 +1,24 @@
 language: android
 android:
   components:
-    # Uncomment the lines below if you want to
-    # use the latest revision of Android SDK Tools
-    - tools
-    - platform-tools
-
-#    # The BuildTools version used by your project
-#    - build-tools-28.0.3
-#
-#    # The SDK version used to compile your project
-#    - android-28
-
-    # Additional components
-    - extra-google-google_play_services
-    - extra-google-m2repository
-    - extra-android-m2repository
+  - tools
+  - platform-tools
+  - extra-google-google_play_services
+  - extra-google-m2repository
+  - extra-android-m2repository
   licenses:
-    - 'android-sdk-preview-license-52d11cd2'
-    - 'android-sdk-license-.+'
-    - 'google-gdk-license-.+'
-
+  - android-sdk-license-.+
+  - google-gdk-license-.+
 before_install:
-  - yes | sdkmanager "platforms;android-28"
-  -
+- yes | sdkmanager "platforms;android-28"
 script:
-- "./gradlew clean build detekt install"
+- "./gradlew clean build detekt install test"
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: T0JqpRSx0a90EzFf1S5uW7OUsWaLYlsy31IYhwWJtV5FYLeZZ6WXq5bFqR2hTYDbR104k91sMu6FfYDLxWp922oEbt0wZs70FimLpLDYYiWzMMLRRdf2bK0RGhBV0zdPIFbdqDifMPPgKwXn3eC3r5u++c2200MbvspEvq5cbh2wWv5QXKs9sFz/AyA+Jm8v4/wKi/iBmY56aTtMUSxRXqxKJkuq1nnDIoIa9anBe5jmxJyO8rj8DvSzW/OqfmrL3rz0MFkeTIgULPddJo36I7PvYAxeMVqYkp1LDakcmZTEtH2S07ctyl1lO0JTrx1EKqxE0BDrE/IrrNRplOmYLSH7MZtaMYL38czW++Hcegt3+0OwWKz30Z7pllmdb0T+Q+SOc5VBVYcLOmmrit2CYZvHwzRdweb/kvOLvAcL661HE8fTRkTcgW6Rxq99xKC8K1tqNCgpGFXzK3sV1/6VBiP/HMqk/6UO4UPcO9GvZi/iVJnuBZJ5cFCuLh2N6yB5AVcjPAoVtra9cfMUqcIXZXU/UY5IVAQkQy5gRQg8lhvqOdXlZMsIyMjAhzUnk/9GoxrQWUC5gT/EQxI1Shx5YHrGYyO/xiPz4gnbGmqQzjdd0DRO0Uxr3LMBykDIReSxqVjxiTG4O1yZqsOGKemQGHFGkZtHgcHVUH6xoIRc85E=
+  file: ''
+  on:
+    repo: 10bis/CompactCreditInput
+    tags: true

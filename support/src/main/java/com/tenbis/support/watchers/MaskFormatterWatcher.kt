@@ -8,8 +8,7 @@ import android.view.View
 import android.widget.EditText
 import com.tenbis.support.listeners.MaskFormatterWatcherListener
 
-abstract class MaskFormatterFormatterWatcher : TextWatcher, View.OnKeyListener,
-    MaskFormatterWatcherListener {
+abstract class MaskFormatterWatcher : TextWatcher, View.OnKeyListener, MaskFormatterWatcherListener {
 
     abstract val maxLength: Int
     private var deleteActionIntercepted = false

@@ -6,9 +6,9 @@ import com.tenbis.support.consts.CardType
 import com.tenbis.support.listeners.CreditCardTextChangeListener
 import com.tenbis.support.spans.PaddingRightSpan
 
-class CreditCardNumberMaskWatcher(
+open class CreditCardNumberMaskWatcher(
     private val creditCardTextChangeListener: CreditCardTextChangeListener
-) : MaskFormatterFormatterWatcher() {
+) : MaskFormatterWatcher() {
 
     private var cardType: CardType = CardType.UNKNOWN
 

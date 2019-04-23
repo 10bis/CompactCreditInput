@@ -8,9 +8,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
 
-class CreditCardDateMaskWatcher(
+open class CreditCardDateMaskWatcher(
     private val creditCardTextChangeListener: CreditCardTextChangeListener
-) : MaskFormatterFormatterWatcher() {
+) : MaskFormatterWatcher() {
 
     override val maxLength: Int = DATE_MAX_LENGTH
 

@@ -4,9 +4,9 @@ import android.text.Editable
 import com.tenbis.support.consts.CardType
 import com.tenbis.support.listeners.CreditCardTextChangeListener
 
-class CreditCardCvvMaskWatcher(
+open class CreditCardCvvMaskWatcher(
     private val creditCardTextChangeListener: CreditCardTextChangeListener
-) : MaskFormatterFormatterWatcher() {
+) : MaskFormatterWatcher() {
 
     var cardType: CardType = CardType.UNKNOWN
 
