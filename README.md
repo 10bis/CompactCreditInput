@@ -6,7 +6,7 @@ A compact credit card input field that combines the number date and cvv into a s
 [![Release](https://jitpack.io/v/10bis/compactCreditInput.svg)](https://jitpack.io/#10bis/compactCreditInput)  
   
   
-<img src="screenshots/screen_amex.png" alt="static_amex" width="300"/> <img src="screenshots/screen_visa.png" alt="static_visa" width="300"/>  
+<img src="gifs/demo.gif" alt="gif_demo" width="300"/> <img src="screenshots/screen_amex.png" alt="static_amex" width="300"/> <img src="screenshots/screen_visa.png" alt="static_visa" width="300"/>  
   
 ## Features  
   
