@@ -22,14 +22,14 @@ A compact credit card input field that combines the number date and cvv into a s
   
 Add JitPack to your repositories  
   
-	 repositories { 
-		 maven { url "https://jitpack.io" } 
-	 }  
+    repositories { 
+	    maven { url "https://jitpack.io" } 
+    }  
 And then add the dependency to your dependencies   
   
-	 dependencies { 
-		 implementation "com.github.10bis:compactCreditInput:$latest_version" 
-	 }  
+    dependencies { 
+	    implementation "com.github.10bis:compactCreditInput:$latest_version" 
+    }  
 	 
 ## Usage  
 Add the view to your layout file 
