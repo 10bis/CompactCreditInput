@@ -19,7 +19,7 @@ Please note we have a code of conduct, please follow it in all your interactions
 ## Code of Conduct
 We use [detekt](https://github.com/arturbosch/detekt) as our code smell analysis,
 with the following [rule set](detekt-config.yml)
-To ease your process you can install the [IntellijJ plugin])(https://github.com/arturbosch/detekt-intellij-plugin) 
+To ease your process you can install the [IntellijJ plugin](https://github.com/arturbosch/detekt-intellij-plugin) 
 
 ### Our Pledge
 
