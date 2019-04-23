@@ -13,12 +13,12 @@ A compact credit card input field that combines the number date and cvv into a s
  - Automatic card number formatting
  - Realtime date validation
  - Card type logo based on typed number
- - LifecycleOwner support
+ - Lifecycle automatic disposal support
  - Keyboard events handling
- - Auto fill compatible 
- - Copy & Paste support  
+ - Auto-fill compatible 
+ - Copy & Paste support
  
-## Getting Started  
+## Installation
   
 Add JitPack to your repositories  
   
@@ -30,40 +30,93 @@ And then add the dependency to your dependencies
 	 dependencies { 
 		 implementation "com.github.10bis:compactCreditInput:$latest_version" 
 	 }  
-### Simple usage  
+	 
+## Usage  
 Add the view to your layout file 
   
 	<com.tenbis.support.views.CompactCreditInput  
-	    android:id="@+id/main_activity_credit_card"  
+	    android:id="@+id/compact_credit_card_input"  
 	    android:layout_width="match_parent"  
 	    android:layout_height="wrap_content" />
 
-In Your Fragment/Activity
 
-implement the card state change
+You can further customize the field in your layout file by changing 
+  
+ - `card_background`
+ - `label_text`
+ - `label_text_color`
+ - `label_text_font`
+ - `text_font`
+ - `text_color`
+ - `hint_color`
+ - `card_number_hint`
+ - `card_date_hint`
+ - `card_cvv_hint`
+ 
+Or in your code 
+   
+  - `cardBackground`
+  - `labelText`
+  - `labelTextColor`
+  - `labelTextFont`
+  - `textFont`
+  - `textColor`
+  - `hintColor`
+  - `cardNumberHint`
+  - `cardDateHint`
+  - `cardCvvHint`
 
-	class MainActivity : AppCompatActivity(), OnCreditCardStateChanged {
 
-implement the listener functions 
+### Events
+The library notifies when a change occur using the `OnCreditCardStateChanged` interface
 
-	override fun onCreditCardCompleted(creditCard: CreditCard) {  
-		//Credit card is available 
-	}  
-	  
-	override fun onInvalidCardTyped() {  
-	 //Credit card is unavailable 
-	}
-	
-In your `onCreate` attach the lifecycle and add the state listener
-	
-	main_activity_credit_card.attachLifecycle(lifecycle)  
-	main_activity_credit_card.addOnCreditCardStateChangedListener(this)
+ - Once all fields have valid inputs
+   
+        onCreditCardValid(creditCard: CreditCard)
 
-That's it 
+ - Once a valid card number is entered
+   
+        onCreditCardNumberValid(creditCardNumber: String)
+
+ - Once a valid expiration date is entered
+   
+        onCreditCardExpirationDateValid(month: Int, year: Int)
+
+ - Once a valid cvv is entered
+   
+        onCreditCardCvvValid(cvv: String)
+
+ - Once the card type is found
+   
+        onCreditCardTypeFound(cardType: CardType)
+
+ - Once one of the fields is invalid
+   
+        onInvalidCardTyped()
+
+You can subscribe to events by calling
+
+    compactCreditCardInput.addOnCreditCardStateChangedListener(OnCreditCardStateChanged)
+    
+You can unsubscribe from events by calling
+
+    compactCreditCardInput.removeOnCreditCardStateChangedListener(OnCreditCardStateChanged)
+    
+### Cleaning up
+The library can clean it self automatically when it has an attached `Lifecycle`
+You can attach your lifecycle by calling
+
+    compactCreditCardInput.attachLifecycle(Lifecycle)
+    
+If you don't want to attach the lifecycle just call 
+
+    compactCreditCardInput.onDestroy()
+    
+When your'e done with the field
   
 ## Contributing  
   
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.  
+Please read [CONTRIBUTING](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.  
   
 ## Versioning  
   

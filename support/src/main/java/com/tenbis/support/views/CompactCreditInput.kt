@@ -8,6 +8,7 @@ import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.os.Parcel
 import android.os.Parcelable
+import android.support.annotation.DrawableRes
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.AppCompatEditText
 import android.support.v7.widget.AppCompatImageView
@@ -144,8 +145,6 @@ class CompactCreditInput @JvmOverloads constructor(
             cardCvvNumberInput.hint = value
         }
 
-    var showKeyboardOnStart: Boolean = true
-
     init {
         orientation = VERTICAL
         initializeAttributes()
@@ -191,34 +190,11 @@ class CompactCreditInput @JvmOverloads constructor(
     }
 
     override fun onCardTypeFound(cardType: CardType) {
-        val cardTypeIconRes = when (cardType) {
-            CardType.UNKNOWN ->
-                R.drawable.ic_card_default
-
-            CardType.DINERS_CLUB ->
-                R.drawable.ic_card_diners
-
-            CardType.DISCOVER ->
-                R.drawable.ic_card_discover
-
-            CardType.AMERICAN_EXPRESS ->
-                R.drawable.ic_card_amex
-
-            CardType.MASTERCARD ->
-                R.drawable.ic_card_mastercard
-
-            CardType.VISA ->
-                R.drawable.ic_card_visa
-
-            CardType.JCB ->
-                R.drawable.ic_card_jcb
-
-            CardType.MAESTRO ->
-                R.drawable.ic_card_maestro
-        }
-
-        cardTypeImage.setImageResource(cardTypeIconRes)
         cardCvvTextWatcher.cardType = cardType
+
+        cardTypeImage.setImageResource(getCardTypeImageId(cardType))
+
+        listeners.forEach { it.onCreditCardTypeFound(cardType) }
     }
 
     override fun onCardNumberEntered(cardNumber: String?, completed: Boolean) {
@@ -226,6 +202,9 @@ class CompactCreditInput @JvmOverloads constructor(
             creditCard.cardNumber = cardNumber
             if (completed) {
                 cardExpirationDateInput.requestFocus()
+            }
+            listeners.forEach {
+                it.onCreditCardNumberValid(cardNumber)
             }
             cardNumberValid = true
             invalidateSubmission()
@@ -247,6 +226,9 @@ class CompactCreditInput @JvmOverloads constructor(
         creditCard.expiryMonth = month
         creditCard.expiryYear = year
         cardDateValid = true
+        listeners.forEach {
+            it.onCreditCardExpirationDateValid(month, year)
+        }
         invalidateSubmission()
     }
 
@@ -264,14 +246,20 @@ class CompactCreditInput @JvmOverloads constructor(
 
         creditCard.cvv = cvv
         cardCvvValid = true
+        listeners.forEach {
+            it.onCreditCardCvvValid(cvv)
+        }
         invalidateSubmission()
     }
 
     override fun onNext(appendChar: Char?) {
+        val current = cardRoot.focusedChild as? EditText ?: return
+        val shouldAppendChar = current.selectionStart == current.length()
+
         val child = cardRoot.shiftFocus(1) as? EditText ?: return
         child.setSelection(0)
 
-        if (appendChar != null) {
+        if (appendChar != null && shouldAppendChar) {
             child.text.insert(0, StringBuilder().append(appendChar))
         }
     }
@@ -325,6 +313,35 @@ class CompactCreditInput @JvmOverloads constructor(
         invalidate()
     }
 
+    @DrawableRes
+    fun getCardTypeImageId(cardType: CardType): Int {
+        return when (cardType) {
+            CardType.UNKNOWN ->
+                R.drawable.ic_card_default
+
+            CardType.DINERS_CLUB ->
+                R.drawable.ic_card_diners
+
+            CardType.DISCOVER ->
+                R.drawable.ic_card_discover
+
+            CardType.AMERICAN_EXPRESS ->
+                R.drawable.ic_card_amex
+
+            CardType.MASTERCARD ->
+                R.drawable.ic_card_mastercard
+
+            CardType.VISA ->
+                R.drawable.ic_card_visa
+
+            CardType.JCB ->
+                R.drawable.ic_card_jcb
+
+            CardType.MAESTRO ->
+                R.drawable.ic_card_maestro
+        }
+    }
+
     /**
      * Shifts the focus of the currently focused child
      *
@@ -351,10 +368,9 @@ class CompactCreditInput @JvmOverloads constructor(
      * Notifies the listeners on evey change
      */
     private fun invalidateSubmission() {
-
         if (cardNumberValid && cardDateValid && cardCvvValid) {
             listeners.forEach {
-                it.onCreditCardCompleted(creditCard)
+                it.onCreditCardValid(creditCard)
             }
         } else {
             listeners.forEach {
@@ -406,6 +422,7 @@ class CompactCreditInput @JvmOverloads constructor(
         outAttrs?.imeOptions = EditorInfo.IME_ACTION_NEXT
         return super.onCreateInputConnection(outAttrs)
     }
+
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy() {
         listeners.clear()

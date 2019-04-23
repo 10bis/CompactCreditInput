@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(), OnCreditCardStateChanged {
         main_activity_credit_card.addOnCreditCardStateChangedListener(this)
     }
 
-    override fun onCreditCardCompleted(creditCard: CreditCard) {
+    override fun onCreditCardValid(creditCard: CreditCard) {
         Toast.makeText(this, creditCard.toString(), Toast.LENGTH_LONG).show()
     }
 

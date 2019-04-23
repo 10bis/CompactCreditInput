@@ -17,6 +17,9 @@ Please note we have a code of conduct, please follow it in all your interactions
    do not have permission to do that, you may request the second reviewer to merge it for you.
 
 ## Code of Conduct
+We use [detekt](https://github.com/arturbosch/detekt) as our code smell analysis,
+with the following [rule set](detekt-config.yml)
+To ease your process you can install the [IntellijJ plugin])(https://github.com/arturbosch/detekt-intellij-plugin) 
 
 ### Our Pledge
 
