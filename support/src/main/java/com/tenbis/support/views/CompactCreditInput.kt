@@ -52,25 +52,25 @@ class CompactCreditInput @JvmOverloads constructor(
     private var cardDateValid = false
     private var cardCvvValid = false
 
-    private val root: View = LayoutInflater.from(context)
+    val root: View = LayoutInflater.from(context)
         .inflate(R.layout.view_compact_credit_input, this, true)
 
-    private val cardRoot: LinearLayoutCompat =
+    val cardRoot: LinearLayoutCompat =
         root.findViewById(R.id.view_compat_credit_input_card_root)
 
-    private val label: AppCompatTextView =
+    val label: AppCompatTextView =
         root.findViewById(R.id.view_compat_credit_input_card_label)
 
-    private val cardTypeImage: AppCompatImageView =
+    val cardTypeImage: AppCompatImageView =
         root.findViewById(R.id.view_compat_credit_input_card_type_image)
 
-    private val cardNumberInput: AppCompatEditText =
+    val cardNumberInput: AppCompatEditText =
         root.findViewById(R.id.view_compat_credit_input_card_number_input)
 
-    private val cardExpirationDateInput: AppCompatEditText =
+    val cardExpirationDateInput: AppCompatEditText =
         root.findViewById(R.id.view_compat_credit_input_card_date_input)
 
-    private val cardCvvNumberInput: AppCompatEditText =
+    val cardCvvNumberInput: AppCompatEditText =
         root.findViewById(R.id.view_compat_credit_input_card_cvv_input)
 
     private var defaultLabelTextColor = ContextCompat.getColor(context, DEFAULT_LABEL_COLOR)
