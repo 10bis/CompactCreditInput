@@ -82,17 +82,21 @@ open class CreditCardDateMaskWatcher(
 
     override fun onRoundCompleted(currentContent: String) {
         if (isValid && currentContent.length == maxLength && parsedValidDate != null) {
-            creditCardTextChangeListener
-                .onCardDateEntered(true,
-                    parsedValidDate!!.month,
-                    parsedValidDate!!.year % TWO_DIGIT_YEAR_EXTRACTOR_MODULO
-                )
+            val calendar = Calendar.getInstance()
+            calendar.time = parsedValidDate
+
+            creditCardTextChangeListener.onCardDateEntered(
+                true,
+                calendar.get(Calendar.MONTH) + MONTH_CURRECTION_DELTA,
+                calendar.get(Calendar.YEAR) % TWO_DIGIT_YEAR_EXTRACTOR_MODULO
+            )
         } else {
             creditCardTextChangeListener.onCardDateEntered()
         }
     }
 
     companion object {
+        private const val MONTH_CURRECTION_DELTA = 1
         private const val DIVIDER_INDEX = 2
         private const val TWO_DIGIT_YEAR_EXTRACTOR_MODULO = 100
         private val FIXABLE_MONTH_RANGE = 2..9
