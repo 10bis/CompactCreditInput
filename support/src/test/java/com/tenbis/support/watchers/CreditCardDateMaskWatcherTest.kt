@@ -49,6 +49,12 @@ class CreditCardDateMaskWatcherTest {
         assertEquals("05",  simulateTextInput(dateMaskWathcer, "", "5"))
     }
 
+    @Test
+    fun date_typed_returns_as_valid_int() {
+        editText.setText("0519")
+        verify(textChangeListener, times(1)).onCardDateEntered(true, 5, 19)
+    }
+
     private fun simulateTextInput(tw: TextWatcher, original: String, input: String): String {
         // TODO review all the int parameters
         tw.beforeTextChanged(original, 0, original.length, input.length)
