@@ -38,6 +38,11 @@ class CompactCreditInput @JvmOverloads constructor(
 ) : LinearLayoutCompat(context, attrs, defStyleAtr),
     CreditCardTextChangeListener, LifecycleObserver {
 
+    private var defaultLabelTextColor = ContextCompat.getColor(context, DEFAULT_LABEL_COLOR)
+    private var defaultTextColor = ContextCompat.getColor(context, DEFAULT_TEXT_COLOR)
+    private var defaultFieldsBackgroundColor =
+        ContextCompat.getColor(context, DEFAULT_FIELDS_BACKGROUND_COLOR)
+
     private val inputManager: InputMethodManager? = if (!isInEditMode)
         context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager else null
 
@@ -73,14 +78,29 @@ class CompactCreditInput @JvmOverloads constructor(
     val cardCvvNumberInput: AppCompatEditText =
         root.findViewById(R.id.view_compat_credit_input_card_cvv_input)
 
-    private var defaultLabelTextColor = ContextCompat.getColor(context, DEFAULT_LABEL_COLOR)
-    private var defaultTextColor = ContextCompat.getColor(context, DEFAULT_TEXT_COLOR)
-
     var cardBackground: Drawable =
         ContextCompat.getDrawable(context, R.drawable.background_input_field)!!
         set(value) {
             field = value
             cardRoot.background = value
+        }
+
+    var cardNumberBackgroundColor: Int = defaultFieldsBackgroundColor
+        set(value) {
+            field = value
+            cardNumberInput.setBackgroundColor(value)
+        }
+
+    var cardDateBackgroundColor: Int = defaultFieldsBackgroundColor
+        set(value) {
+            field = value
+            cardExpirationDateInput.setBackgroundColor(value)
+        }
+
+    var cardCvvBackgroundColor: Int = defaultFieldsBackgroundColor
+        set(value) {
+            field = value
+            cardCvvNumberInput.setBackgroundColor(value)
         }
 
     var labelText: String = ""
@@ -278,11 +298,27 @@ class CompactCreditInput @JvmOverloads constructor(
                 cardBackground = background
             }
 
+            cardNumberBackgroundColor = it.getColor(
+                R.styleable.CompactCreditInput_card_number_background_color,
+                defaultFieldsBackgroundColor
+            )
+
+            cardDateBackgroundColor = it.getColor(
+                R.styleable.CompactCreditInput_card_date_background_color,
+                defaultFieldsBackgroundColor
+            )
+
+            cardCvvBackgroundColor = it.getColor(
+                R.styleable.CompactCreditInput_card_cvv_background_color,
+                defaultFieldsBackgroundColor
+            )
+
             it.getString(R.styleable.CompactCreditInput_label_text)?.let { label ->
                 labelText = label
             }
 
-            labelTextColor = it.getColor(R.styleable.CompactCreditInput_label_text_color, defaultLabelTextColor)
+            labelTextColor =
+                it.getColor(R.styleable.CompactCreditInput_label_text_color, defaultLabelTextColor)
 
             it.getString(R.styleable.CompactCreditInput_label_text_font)?.let { font ->
                 labelTextFont = font
@@ -500,5 +536,6 @@ class CompactCreditInput @JvmOverloads constructor(
 
         private val DEFAULT_LABEL_COLOR = R.color.dark_blue
         private val DEFAULT_TEXT_COLOR = R.color.medium_grey
+        private val DEFAULT_FIELDS_BACKGROUND_COLOR = R.color.white
     }
 }
