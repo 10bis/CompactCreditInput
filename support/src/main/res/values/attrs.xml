@@ -9,6 +9,10 @@
 
         <attr name="card_background" format="reference"/>
 
+        <attr name="card_number_background_color" format="color"/>
+        <attr name="card_date_background_color" format="color"/>
+        <attr name="card_cvv_background_color" format="color"/>
+
         <attr name="label_text_color" format="color"/>
         <attr name="text_color" format="color"/>
         <attr name="hint_color" format="color"/>

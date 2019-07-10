@@ -43,6 +43,9 @@ Add the view to your layout file
 You can further customize the field in your layout file by changing 
   
  - `card_background`
+ - `card_number_background_color`
+ - `card_date_background_color`
+ - `card_cvv_background_color`
  - `label_text`
  - `label_text_color`
  - `label_text_font`
@@ -56,6 +59,9 @@ You can further customize the field in your layout file by changing
 Or in your code 
    
   - `cardBackground`
+  - `cardNumberBackgroundColor`
+  - `cardDateBackgroundColor`
+  - `cardCvvBackgroundColor`
   - `labelText`
   - `labelTextColor`
   - `labelTextFont`
