@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable
 import android.os.Parcel
 import android.os.Parcelable
 import android.support.annotation.DrawableRes
+import android.support.constraint.ConstraintLayout
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.AppCompatEditText
 import android.support.v7.widget.AppCompatImageView
@@ -35,7 +36,7 @@ class CompactCreditInput @JvmOverloads constructor(
     context: Context,
     val attrs: AttributeSet? = null,
     val defStyleAtr: Int = -1
-) : LinearLayoutCompat(context, attrs, defStyleAtr),
+) : ConstraintLayout(context, attrs, defStyleAtr),
     CreditCardTextChangeListener, LifecycleObserver {
 
     private var defaultLabelTextColor = ContextCompat.getColor(context, DEFAULT_LABEL_COLOR)
@@ -60,7 +61,7 @@ class CompactCreditInput @JvmOverloads constructor(
     val root: View = LayoutInflater.from(context)
         .inflate(R.layout.view_compact_credit_input, this, true)
 
-    val cardRoot: LinearLayoutCompat =
+    val cardRoot: ConstraintLayout =
         root.findViewById(R.id.view_compat_credit_input_card_root)
 
     val label: AppCompatTextView =
@@ -166,7 +167,6 @@ class CompactCreditInput @JvmOverloads constructor(
         }
 
     init {
-        orientation = VERTICAL
         initializeAttributes()
 
         cardNumberInput
