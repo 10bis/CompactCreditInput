@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/view_compat_credit_input_root"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    tools:parentTag="android.support.constraint.ConstraintLayout">
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/view_compat_credit_input_card_label"
@@ -13,66 +15,74 @@
         android:text="@string/card_details"
         style="@style/CompactCardInputText.InputLabel"/>
 
-    <android.support.v7.widget.LinearLayoutCompat
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/view_compat_credit_input_card_root"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="@drawable/background_input_field"
-        android:orientation="horizontal"
-        android:paddingStart="8dp"
-        android:paddingTop="2dp"
-        android:paddingEnd="14dp"
-        android:paddingBottom="2dp">
+        app:layout_constraintTop_toBottomOf="@id/view_compat_credit_input_card_label">
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/view_compat_credit_input_card_type_image"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
             android:focusable="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_card_default" />
 
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/view_compat_credit_input_card_number_input"
             style="@style/CompactCardInputText.InputField"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:background="@color/white"
             android:gravity="center_vertical"
             android:hint="@string/credit_card_input_number_hint"
             android:imeOptions="actionNext"
             android:inputType="number"
-            android:maxLength="19" />
+            android:maxLength="19"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/view_compat_credit_input_card_date_input"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toEndOf="@+id/view_compat_credit_input_card_type_image"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/view_compat_credit_input_card_date_input"
             style="@style/CompactCardInputText.InputField"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="16dp"
+            android:layout_height="wrap_content"
             android:background="@color/white"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:hint="@string/credit_card_input_date_hint"
             android:imeOptions="actionNext"
             android:inputType="number"
-            android:maxLength="5" />
+            android:maxLength="5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/view_compat_credit_input_card_cvv_input"
+            app:layout_constraintStart_toEndOf="@+id/view_compat_credit_input_card_number_input"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/view_compat_credit_input_card_cvv_input"
             style="@style/CompactCardInputText.InputField"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:background="@color/white"
             android:gravity="center_vertical"
             android:hint="@string/credit_card_input_cvv_hint"
             android:imeOptions="actionDone"
             android:inputType="number"
-            android:maxLength="4" />
+            android:maxLength="4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view_compat_credit_input_card_date_input"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </android.support.v7.widget.LinearLayoutCompat>
+    </android.support.constraint.ConstraintLayout>
 </merge>
