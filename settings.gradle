@@ -1,1 +1,1 @@
-include ':app', ':support', ':CompactCardInputX'
+include ':app', ':library'

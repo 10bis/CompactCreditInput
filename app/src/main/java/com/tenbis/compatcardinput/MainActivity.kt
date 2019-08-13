@@ -1,12 +1,12 @@
 package com.tenbis.compatcardinput
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.tenbis.support.consts.CardType
-import com.tenbis.support.listeners.OnCreditCardStateChanged
-import com.tenbis.support.models.CreditCard
+import com.tenbis.library.consts.CardType
+import com.tenbis.library.listeners.OnCreditCardStateChanged
+import com.tenbis.library.models.CreditCard
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), OnCreditCardStateChanged {

@@ -6,7 +6,7 @@
 	android:layout_height="match_parent"
 	tools:context=".MainActivity">
 
-	<com.tenbis.support.views.CompactCreditInput
+	<com.tenbis.library.views.CompactCreditCardInput
 		android:id="@+id/main_activity_credit_card"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
