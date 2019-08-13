@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CompactCreditCardInput">
+
+        <attr name="label_text" format="string"/>
+
+        <attr name="label_text_font" format="string"/>
+        <attr name="text_font" format="string"/>
+
+        <attr name="card_background" format="reference"/>
+
+        <attr name="card_number_background_color" format="color"/>
+        <attr name="card_date_background_color" format="color"/>
+        <attr name="card_cvv_background_color" format="color"/>
+
+        <attr name="label_text_color" format="color"/>
+        <attr name="text_color" format="color"/>
+        <attr name="hint_color" format="color"/>
+
+        <attr name="card_number_hint" format="string"/>
+        <attr name="card_date_hint" format="string"/>
+        <attr name="card_cvv_hint" format="string"/>
+
+    </declare-styleable>
+</resources>

@@ -34,7 +34,7 @@ And then add the dependency to your dependencies
 ## Usage  
 Add the view to your layout file 
   
-	<com.tenbis.support.views.CompactCreditInput  
+	<com.tenbis.library.views.CompactCreditCardInput
 	    android:id="@+id/compact_credit_card_input"  
 	    android:layout_width="match_parent"  
 	    android:layout_height="wrap_content" />
@@ -133,6 +133,10 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 * **Gil Goldzweig Goldbuam** - *Initial work* - [Gil Goldzweig Goldbaum](https://github.com/gilgoldzweig)  
   
 See also the list of [contributors](https://github.com/10bis/CompactCreditInput/contributors) who participated in this project.  
+  
+  ## Changelog  
+    
+  Please read [CHANGELOG](CHANGELOG.md) for details on what changes we're made
   
 ## License  
   
