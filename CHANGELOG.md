@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+ ## [2.0.4] - 2019-09-11
+ ### Added
+  - Added variable to keep the keyboard open after cvv field is entered
+  
 ## [2.0] - 2019-08-13
 ### Changed
  - Migrated project to AndroidX (use version[1.0.3] if you hav'nt updated to AndroidX)
