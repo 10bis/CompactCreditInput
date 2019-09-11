@@ -166,6 +166,8 @@ class CompactCreditCardInput @JvmOverloads constructor(
             cardCvvNumberInput.hint = value
         }
 
+    var closeKeyboardOnValidCard: Boolean = true
+
     init {
         initializeAttributes()
 
@@ -260,7 +262,7 @@ class CompactCreditCardInput @JvmOverloads constructor(
             return
         }
 
-        if (completed) {
+        if (closeKeyboardOnValidCard && completed) {
             inputManager?.hideSoftInputFromWindow(windowToken, 0)
         }
 
