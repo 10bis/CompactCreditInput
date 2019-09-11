@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
- ## [2.0.4] - 2019-09-11
+ ## [2.0.1] - 2019-09-11
  ### Added
   - Added variable to keep the keyboard open after cvv field is entered
   
