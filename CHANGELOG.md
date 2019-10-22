@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+ ## [2.0.2] - 2019-10-22
+ ### Changed
+  - Changed field width from `match_parent` to `0dp` with constraint start & constraint end
+  - Changed Sample `activity_main.xml` root tag from `RelativeLayout` to `ConstraintLayout`
+
  ## [2.0.1] - 2019-09-11
  ### Added
   - Added variable to keep the keyboard open after cvv field is entered
