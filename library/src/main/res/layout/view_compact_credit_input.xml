@@ -17,8 +17,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/view_compat_credit_input_card_root"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="45dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/background_input_field"
         app:layout_constraintTop_toBottomOf="@id/view_compat_credit_input_card_label">
 
