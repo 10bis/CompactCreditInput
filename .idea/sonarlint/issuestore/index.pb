@@ -11,12 +11,8 @@ N
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 ?
 settings.gradle,0/5/05efc8b1657769a27696d478ded1e95f38737233
-@
-local.properties,0/7/0712df971a99ac4d2fccb8e0fb19f377f3374cca
 A
 gradle.properties,2/a/2afbb999f001938c88fa43fc2ef52abf0f8213e4
-D
-CompactCardInput.iml,c/f/cff0ce3178981a0cd29bdf80132fdb039c1578e7
 <
 dokka.gradle,6/5/652ca5bd503142f933442428a04e33847afa820d
 =
