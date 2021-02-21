@@ -475,6 +475,8 @@ class CompactCreditCardInput @JvmOverloads constructor(
 
         cardNumberInput.removeTextChangedListener(cardNumberTextWatcher)
 
+        cardNumberInput.setOnKeyListener(null)
+
         cardExpirationDateInput.removeTextChangedListener(cardDateTextWatcher)
 
         cardExpirationDateInput.setOnKeyListener(null)
